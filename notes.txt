@@ -91,6 +91,7 @@ Username (leave blank to use 'ja95aricapa'): Jaime2
 Email address: jaime2@gmail.com
 Password: jaime2
 
+para modelos (base de datos) mirar el sgte link: https://tutorial.djangogirls.org/en/django_models/
 
 ## Uso de postgresql 
 
