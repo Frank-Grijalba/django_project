@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import render
+from .forms import RegForm
 
 #soporta todas las rutas que vamos a crear y que son llamadas en urls.py
 
@@ -10,4 +11,8 @@ def functionHello(request, *args, **kwargs):
 
 # LLamada de una página web
 def index(request):
-    return render(request, "index.html", {})
+    form = RegForm()
+    context = {
+        "the_form": form,
+    }
+    return render(request, "index.html", context)
