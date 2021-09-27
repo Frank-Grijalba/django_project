@@ -1,5 +1,11 @@
-<h1>Este es la página index.html</h1>
+{{ titulo }}
+<hr/>
+<br/>
+
+{% if form %} <!-- Esta linea es Si envia un mensaje en la misma pagina, para que no aparezca el boton de registro-->
+{% comment %} <h1>Este es la página index.html</h1> {% endcomment %}
 <form method="POST" action="">{% csrf_token %} {% comment %} formulario contra la falsificación en post {% endcomment %}
 {{the_form.as_p}}
 <input type = 'submit' value ="Registrarme" />
 </form>
+{% endif %}
