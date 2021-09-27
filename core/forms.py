@@ -8,6 +8,15 @@ class RegModelForm(forms.ModelForm):
         model = Registrado
         fields = ["nombre", "email"]
 
+    def clean_email(self):
+        email = self.cleaned_data["email"]
+        # Validaciones a formulario admin
+        email_base, proveedor= email.split("@")
+        dominio, extension = proveedor.split(".")
+        if not extension == "edu":
+            raise forms.ValidationError("Utiliza correo con .edu")
+        return email
+
 class RegForm(forms.Form):
     nombre = forms.CharField(max_length=100)
     email = forms.EmailField()
