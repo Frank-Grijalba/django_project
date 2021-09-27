@@ -131,8 +131,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' # archivos como css, js
+STATIC_URL = '/media/' # archivos de imagenes, videos, audio
 
+# En esta sección tendremos nuestros archivos estaticos
+
+# Hemos creado 1 carpeta para el proyecto llamada static_pro (a nivel de manage.py) y dentro de ella la carpeta static.
+# BASE_DIR corresponde a la carpeta del proyecto. cuando utilizamos os.path.join, es como si cada elemento que este entre parentesis
+# lo separaramos con / especificando ruta (BASE_DIR/static_pro/static)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static_pro', 'static'),
+]
+
+# En esta sección se crea la carpeta de ambiente de desarrollo y se crea fuera de la carpeta del proyecto (../django_project) al igual
+# que el media. con os.path.dirname estamos direccionando los archivos al directorio padre del proyecto 
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_env', 'static_root')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_env' 'media_root')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
