@@ -2,8 +2,7 @@
 <hr/>
 <br/>
 
-
 <form method="POST" action="">{% csrf_token %} {% comment %} formulario contra la falsificación en post {% endcomment %}
-{{the_form.as_p}}
+{{ contact.as_p }}
 <input type = 'submit' value ="Registrarme" />
 </form>

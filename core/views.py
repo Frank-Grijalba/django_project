@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import render
-from .forms import RegForm, RegModelForm
+from .forms import RegModelForm, ContactForm #RegForm 
 from blog.models import Registrado
+
 
 #soporta todas las rutas que vamos a crear y que son llamadas en urls.py
 
@@ -44,3 +45,21 @@ def index(request):
     # contexto es como los id que serán utilizados por ejemplo en las paginas web
 
     return render(request, "index.html", context)
+
+def contact(request):
+    contact = ContactForm(request.POST or None)
+    if contact.is_valid():
+        # SI tenemos muchos datos por manipular, lo podemos hacer con un for, en este ejemplo
+        # vamos a imprimir cada uno de los items
+
+        for key, value in contact.cleaned_data.items():
+            print (key, value)
+        # # Datos limpios
+        # email = contact.cleaned_data["email"]
+        # mensaje = contact.cleaned_data["mensaje"]
+        # nombre = contact.cleaned_data["nombre"]
+        # print (email,mensaje,nombre)
+    context = {
+        "contact":contact,
+    }
+    return render(request, "contact.html", context)

@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core import views as core_views
-from django.conf.urls import url
-
+from core import views
+# Para que todos los url aparezcan sin problema, deben estar entre admin e index...
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', core_views.functionHello),
-    url(r'', core_views.index, name='index')
+    path('hello/', views.functionHello),
+    path('contact/', views.contact),
+    path('', views.index),
 ]

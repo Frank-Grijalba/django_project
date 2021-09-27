@@ -17,6 +17,11 @@ class RegModelForm(forms.ModelForm):
             raise forms.ValidationError("Utiliza correo con .edu")
         return email
 
-class RegForm(forms.Form):
-    nombre = forms.CharField(max_length=100)
+# class RegForm(forms.Form):
+#     nombre = forms.CharField(max_length=100)
+#     email = forms.EmailField()
+class ContactForm(forms.Form):
+    nombre = forms.CharField()
     email = forms.EmailField()
+    mensaje = forms.CharField(widget=forms.Textarea)
+
