@@ -19,7 +19,7 @@ from core import views
 # Para que todos los url aparezcan sin problema, deben estar entre admin e index...
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.functionHello),
-    path('contact/', views.contact),
-    path('', views.index),
+    path('hello/', views.functionHello, name='hello'),
+    path('contact/', views.contact, name='contact'),
+    path('', views.index, name='index'),
 ]

@@ -28,6 +28,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Editado para configuración de correo electronico
+EMAIL_HOST = 'smtp.live.com'
+EMAIL_HOST_USER = 'fjgh.777@hotmail.com'
+EMAIL_HOST_PASSWORD = '*****'
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True
+
+'''Para usar gmail hay que desbloquear el captcha
+https://acounts.google.com/displayunlockcaptcha
+'''
 
 # Application definition
 

@@ -3,7 +3,8 @@ from django.views.generic import View
 from django.shortcuts import render
 from .forms import RegModelForm, ContactForm #RegForm 
 from blog.models import Registrado
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 #soporta todas las rutas que vamos a crear y que son llamadas en urls.py
 
@@ -55,9 +56,18 @@ def contact(request):
         for key, value in contact.cleaned_data.items():
             print (key, value)
         # # Datos limpios
-        # email = contact.cleaned_data["email"]
-        # mensaje = contact.cleaned_data["mensaje"]
-        # nombre = contact.cleaned_data["nombre"]
+        email = contact.cleaned_data["email"]
+        mensaje = contact.cleaned_data["mensaje"]
+        nombre = contact.cleaned_data["nombre"]
+        asunto = "Formulario de contacto"
+        mensaje = "Este es un correo de prueba desde Django!!, usuario: {}, mensaje: {}, nombre: {}".format(email, mensaje, nombre)
+        email_from =settings.EMAIL_HOST_USER #nuestro correo configurado en settings.py
+        email_to = [email_from, "2843@holbertonschool.com"]
+        send_mail(asunto,
+        mensaje,
+        email_from,
+        email_to,
+        fail_silently=False) #mostrar error del servidor
         # print (email,mensaje,nombre)
     context = {
         "contact":contact,
