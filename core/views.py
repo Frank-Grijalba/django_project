@@ -45,7 +45,7 @@ def index(request):
 
     # contexto es como los id que serán utilizados por ejemplo en las paginas web
 
-    return render(request, "index.html", context)
+    return render(request, "base.html", context)
 
 def contact(request):
     contact = ContactForm(request.POST or None)
