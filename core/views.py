@@ -14,7 +14,7 @@ def functionHello(request, *args, **kwargs):
 
 # LLamada de una página web
 def index(request):
-    titulo = "Formulario de registro"
+    titulo = "Bienvenid@"
     # if request.user.is_authenticated():
     #     titulo = "Bienvenido %s" %(request.user)
     form = RegModelForm(request.POST or None)

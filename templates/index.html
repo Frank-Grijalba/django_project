@@ -2,21 +2,39 @@
 {% load crispy_forms_tags %}
 
 {% block jumbotron %}
-  <div class="bg-light p-5 rounded">
-    <h1>Navbar example</h1>
-    <p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this navbar remains in its original position and moves with the rest of the page.</p>
-    <a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">View navbar docs &raquo;</a>
-  </div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="bg-light p-5 rounded">
+            <h1>Django Project</h1>
+            <p class="lead">Consiste en realizar proyectos grandes en muy poco tiempo y a su vez de forma elegante y moderna.</p>
+            <a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">Únete &raquo;</a>
+        </div>
+    </div>
+<div class="col-sm-6" style='background-color:black; height:300px;'></div>
+</div>
 {% endblock %}
 {{ titulo }}
 <hr/>
 <br/>
 
 {% block content %}
-<form method="POST" action="">{% csrf_token %} {% comment %} formulario contra la falsificación en post {% endcomment %}
-{{ the_form|crispy }}
-<br/>
-<input type = 'submit' value ="Registrarme" />
-</form>
-<hr/>
+<div class="row">
+    <div class="col-sm-3 col-xs-12 pull-right">
+    <p class='lead'>{{ titulo }}</p>
+        <form method="POST" action="">{% csrf_token %} {% comment %} formulario contra la falsificación en post {% endcomment %}
+        {{ the_form|crispy }}
+        <br/>
+        <input type = 'submit' value ="Registrarme" />
+        </form>
+        <hr/>
+    </div>
+<div class='col-sm-3'>   
+    <p class='lead'>Creado con Django &amp; Bootstrap</p> 
+</div>
+<div class='col-sm-3'>   
+    <p class='lead'>Código abierto siempre</p> 
+</div>
+<div class='col-sm-3'>   
+    <p class='lead'>Hecho por F.J.G.H.</p> 
+</div>
 {% endblock %}
