@@ -48,6 +48,7 @@ def index(request):
     return render(request, "index.html", context)
 
 def contact(request):
+    titulo = "Contactame"
     contact = ContactForm(request.POST or None)
     if contact.is_valid():
         # SI tenemos muchos datos por manipular, lo podemos hacer con un for, en este ejemplo
@@ -71,5 +72,7 @@ def contact(request):
         # print (email,mensaje,nombre)
     context = {
         "contact":contact,
+        "titulo":titulo,
+
     }
     return render(request, "contact.html", context)

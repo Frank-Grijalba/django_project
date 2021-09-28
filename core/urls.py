@@ -15,16 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core import views
+from core import views as core_view
+from blog import views as blog_view
 from django.conf import settings
 from django.conf.urls.static import static
 
-# Para que todos los url aparezcan sin problema, deben estar entre admin e index...
+# Para que todos los url aparezcan sin problema, deben estar entre admin e index (hablando de la importacion core)
+# eso si, si no se ha invocado la etiqueta -> href="{% url 'nombre_etiqueta' %} en este caso en navbar.html 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.functionHello, name='hello'),
-    path('contact/', views.contact, name='contact'),
-    path('', views.index, name='index'),
+    path('hello/', core_view.functionHello, name='hello'),
+    path('contact/', core_view.contact, name='contact'),
+    path('', core_view.index, name='index'),
+    path('about/', blog_view.about, name='about'),
 ]
 # sección para rutas estaticas
 
