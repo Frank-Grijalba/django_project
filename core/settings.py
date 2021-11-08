@@ -43,14 +43,18 @@ https://acounts.google.com/displayunlockcaptcha
 
 INSTALLED_APPS = [
     # Django apps
+    'django.contrib.sites', #redux
+    'registration', #redux
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Apss de terceros
     'crispy_forms',
+    
     # Mis apps
     'blog.apps.BlogConfig',
     'core',
@@ -65,8 +69,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ROOT_URLCONF = 'core.urls'
 
@@ -156,3 +158,7 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_env' 'media_root')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

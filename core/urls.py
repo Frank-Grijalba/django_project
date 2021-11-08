@@ -28,6 +28,8 @@ urlpatterns = [
     path('contact/', core_view.contact, name='contact'),
     path('', core_view.index, name='index'),
     path('about/', blog_view.about, name='about'),
+    path('accounts/', include('registration.backends.default.urls')),
+    path('create-form/', core_view.create_book_normal, name='create'),
 ]
 # sección para rutas estaticas
 

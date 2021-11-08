@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import render
-from .forms import RegModelForm, ContactForm #RegForm 
-from blog.models import Registrado
+from .forms import RegModelForm, ContactForm, BookFormset
+from blog.models import Registrado, Book
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -48,6 +48,7 @@ def index(request):
     return render(request, "index.html", context)
 
 def contact(request):
+    
     titulo = "Contactame"
     contact = ContactForm(request.POST or None)
     if contact.is_valid():
@@ -76,3 +77,25 @@ def contact(request):
 
     }
     return render(request, "contact.html", context)
+
+def create_book_normal(request):
+    template_name = 'create_normal.html'
+    heading_message = 'Formset Demo'
+    if request.method == 'GET':
+        formset = BookFormset(request.GET or None)
+    elif request.method == 'POST':
+        formset = BookFormset(request.POST)
+        if formset.is_valid():
+            # import ipdb; ipdb.set_trace()
+            for form in formset:
+                # extract name from each form and save
+                name = form.cleaned_data.get('name')
+                # save book instance
+                if name:
+                    Book(name=name).save()
+            # once all books are saved, redirect to book list view
+            return redirect('book_list')
+    return render(request, template_name, {
+        'formset': formset,
+        'heading': heading_message,
+    })

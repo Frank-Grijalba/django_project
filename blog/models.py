@@ -11,3 +11,15 @@ class Registrado(models.Model):
 
     def __unicode__(self):
         return self.email
+    
+
+class Book(models.Model):
+
+    name = models.CharField(max_length=255)
+    isbn_number = models.CharField(max_length=13)
+
+    class Meta:
+        db_table = 'book'
+
+    def __str__(self):
+        return self.name

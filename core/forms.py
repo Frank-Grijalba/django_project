@@ -1,5 +1,6 @@
 from django import forms
 from blog.models import Registrado
+from django.forms import formset_factory
 
 #formularios para ser añadido a una vista (views.py)
 
@@ -25,3 +26,15 @@ class ContactForm(forms.Form):
     email = forms.EmailField()
     mensaje = forms.CharField(widget=forms.Textarea)
 
+
+class BookForm(forms.Form):
+    name = forms.CharField(
+        label='Book Name',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter Book Name here'
+        })
+    )
+
+
+BookFormset = formset_factory(BookForm, extra=1)
